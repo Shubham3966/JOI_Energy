@@ -28,7 +28,7 @@ data.
 | Andrea  | `smart-meter-3` | Power for Everyone    |
 | Alex    | `smart-meter-4` | The Green Eco         |
 
-These values are used in the code and in the following examples too.
+These values are used in the code and in the following s too.
 
 ## Requirements
 
@@ -42,52 +42,37 @@ The project uses Maven for dependency management and building.
 ### Build the project
 
 Compiles the project, runs the tests and creates an executable JAR file:
-
-```console
 $ mvn clean package
+
 Run the application using the executable JAR file:
-
-console
-
 $ java -jar target/developer-joyofenergy-java.jar
+
 Run the tests
 There are two types of tests:
 
 Run unit tests only:
-
-console
-
 $ mvn test
+
 Run functional tests (integration tests):
-
-console
-
 $ mvn verify -Pfunctional-test
+
 Run all tests:
-
-console
-
 $ mvn verify
+
 Run the application
 Run the application which will be listening on port 8080:
-
-console
-
 $ mvn spring-boot:run
+
 API
-Below is a list of API endpoints with their respective input and output. The application needs to be
-running for these endpoints to work.
+Below is a list of API endpoints with their respective input and output. The application needs to be running for these endpoints to work.
 
 Store Readings
 Endpoint:
 
-text
-
 POST /readings/store
-Example request body:
+ request body:
 
 json
-
 {
   "smartMeterId": "<smartMeterId>",
   "electricityReadings": [
@@ -97,56 +82,35 @@ json
     }
   ]
 }
-Example using curl:
-
-console
+ using curl:
 
 $ curl -X POST -H "Content-Type: application/json" "http://localhost:8080/readings/store" \
   -d '{"smartMeterId":"smart-meter-0","electricityReadings":[{"time":1606636800,"reading":0.0503},{"time":1606636860,"reading":0.0621}]}'
+
+
 Get Stored Readings
-Endpoint:
-
-text
-
+Endpoint: 
 GET /readings/read/<smartMeterId>
-Example:
-
-console
-
 $ curl "http://localhost:8080/readings/read/smart-meter-0"
+
+
 Compare Price Plans
 Endpoint:
-
-text
-
 GET /price-plans/compare-all/<smartMeterId>
-Example:
-
-console
-
 $ curl "http://localhost:8080/price-plans/compare-all/smart-meter-0"
+
 Get Recommended Price Plans
 Endpoint:
-
-text
-
 GET /price-plans/recommend/<smartMeterId>[?limit=<limit>]
-Example:
-
-console
-
 $ curl "http://localhost:8080/price-plans/recommend/smart-meter-0?limit=2"
+
+
 Project Structure
 Key files:
-
 pom.xml - Maven project configuration
-
 src/main/java - Application source code
-
 src/test/java - Unit tests
-
 src/functional-test/java - Functional tests
-
 License
 [Specify your license here]
 
